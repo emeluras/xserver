@@ -208,7 +208,7 @@ void *proc_rr( void* list ) {
 			//read from file in quantum
 			
 			if(client->rem > 0){
-				insertLast((struct linkedlist*) list,cliet);
+				insertLast((struct linkedlist*) list,client);
 			}
 			flag = 1;
 			pthread_mutex_unlock(&lock);
