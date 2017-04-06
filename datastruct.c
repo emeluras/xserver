@@ -94,12 +94,14 @@ void insertLast(struct linkedlist* list, struct client* client) {
 		link->next = list->head;
 		link->prev = list->tail;
 	}
-	
-	else {
-		 /* 5. Else traverse till the last node */
-   	 while (list->next != NULL){
-      		  list = list->next;
-		}
+	if (list->size == 1) {
+		list->head = link;
+		list->tail->prev = list->head;
+		list->tail->next = list->head;
+		link->next = list->tail;
+		link->prev = list->tail;
+	} else {
+		    	
 		link->next = list->tail;
 		link->prev=list->tail->prev;
 		list->tail->prev = link;
