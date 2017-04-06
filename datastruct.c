@@ -90,7 +90,9 @@ void insertLast(struct linkedlist* list, struct client* client) {
 
 	if (list->size == 0){
 		list->head = link;
-		link->next = NULL;
+		list->tail = link;
+		link->next = list->head;
+		link->prev = list->tail;
 	}
 	
 	else {
@@ -98,9 +100,11 @@ void insertLast(struct linkedlist* list, struct client* client) {
    	 while (list->next != NULL){
       		  list = list->next;
 		}
-		list>next = link;
-		link->next=NULL;
-	
+		link->next = list->tail;
+		link->prev=list->tail->prev;
+		list->tail->prev = link;
+		
+		list->tail = link;
 	}
 
 	//update size
